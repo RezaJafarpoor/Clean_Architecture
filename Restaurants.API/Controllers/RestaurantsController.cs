@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Services;
 using Restaurants.Domain.Entities;
 
 namespace Restaurants.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class RestaurantsController : ControllerBase
+public class RestaurantsController(IRestaurantService restaurantService) : ControllerBase
 {
 
     [HttpGet]
-    public async Task<List<Restaurant>> GetRestaurants()
+    public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
     {
-        throw new NotImplementedException();
+        var restaurants = await restaurantService.GetAllRestaurants();
+        return Ok(restaurants);
     }
 }

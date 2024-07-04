@@ -5,9 +5,10 @@ namespace Restaurants.Infrastructure.Persistence;
 
 public class RestaurantsDbContext : DbContext
 {
-    
-    
-    
+    public RestaurantsDbContext(DbContextOptions options) : base(options)
+    {
+    }
+
     internal DbSet<Restaurant> Restaurants { get; set; }
     internal DbSet<Dish> dishes { get; set; }
 
