@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.DTOs;
 using Restaurants.Application.Services;
 using Restaurants.Domain.Entities;
 
@@ -9,14 +10,14 @@ public class RestaurantsController(IRestaurantService restaurantService) : Contr
 {
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
+    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants()
     {
         var restaurants = await restaurantService.GetAllRestaurants();
         return Ok(restaurants);
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Restaurant>> GetRestaurantById(int id)
+    public async Task<ActionResult<RestaurantDTO>> GetRestaurantById(int id)
     {
         var restaurant =await restaurantService.GetRestaurantById(id);
         if (restaurant is null)
