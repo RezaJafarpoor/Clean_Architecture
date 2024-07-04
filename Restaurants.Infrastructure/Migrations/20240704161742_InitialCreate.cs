@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Restaurants.Infrastructure.Restaurants.Infrastructure.Migrations
+namespace Restaurants.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

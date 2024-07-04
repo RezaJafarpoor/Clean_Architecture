@@ -13,9 +13,8 @@ var scoped = app.Services.CreateScope();
 var seeder = scoped.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
 await seeder.Seed();
 
-
-
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
 
