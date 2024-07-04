@@ -13,11 +13,11 @@ Content-Type: application/json
 {
   "Name":"Spicy Delights",
   "Description": "A culinary experience like no other",
-  "Category": "Fine Dining",
+  "Category": "Fine we",
   "HasDelivery": true,
   "ContactEmail": "info@gmail.com",
   "Contactnumber": "555-123,4567",
   "City": "Metropolis",
   "Street": "456 Gourmet Avenue",
-  "PostalCode": "54321"
+  "PostalCode": "10-01"
 }
