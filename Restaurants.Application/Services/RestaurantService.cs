@@ -9,16 +9,26 @@ internal class RestaurantService(IRestaurantRepository repository,ILogger<Restau
 {
     public async Task<IEnumerable<RestaurantDTO?>> GetAllRestaurants()
     {
+        logger.LogInformation($"Getting All Restaurants");
         var restaurants = await repository.GetAllAsync();
         var restaurantsDto = restaurants.Select(RestaurantDTO.FromEntity);
-        logger.LogInformation($"Getting All Restaurants");
         return restaurantsDto;
     }
 
     public async Task<RestaurantDTO?> GetRestaurantById(int id)
     {
+        logger.LogInformation($"Getting  Restaurant By Id");
         var restaurant = await repository.GetByIdAsync(id);
         var restaurantDto = RestaurantDTO.FromEntity(restaurant);
+
         return restaurantDto;
+    }
+
+    public Task<int> CreateRestaurant(CreateRestaurantDTO restaurantDto)
+    {
+        logger.LogInformation($"Creating a Restaurant");
+        var restaurant = CreateRestaurantDTO.FromEntity(restaurantDto);
+        var id = repository.Create(restaurant);
+        return id;
     }
 }
