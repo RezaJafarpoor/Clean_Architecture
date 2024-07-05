@@ -6,6 +6,7 @@ using Restaurants.Application.CQRS.RestaurantsQueries.GetRestaurantByIdQuery;
 using Restaurants.Application.CQRS.RestaurantsQueries.RestaurantGetAllQuery;
 using Restaurants.Application.CQRS.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
+using Restaurants.Domain.Exceptions;
 using System.Runtime.CompilerServices;
 
 namespace Restaurants.API.Controllers;
@@ -26,11 +27,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     public async Task<ActionResult<RestaurantDTO>> GetRestaurantById(int id)
     {
         var restaurant =await mediator.Send(new GetRestaurantByIdQuery(id));
-        if (restaurant is null)
-        {
-            return NotFound();
-        }
-
+        
         return Ok(restaurant);
     }
 
@@ -47,12 +44,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteRestaurant(int id)
     {
-        var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
-        if (isDeleted)
-        {
-            return NoContent();
-        }
-
+        await mediator.Send(new DeleteRestaurantCommand(id));
+        
         return NotFound();
     }
 
@@ -62,12 +55,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> UpdateRestaurantById(int id, [FromBody]UpdateRestaurantCommand command)
     {
         command.Id = id;
-        var isUpdated = await mediator.Send(command);
-        if (isUpdated)
-        {
-            return NoContent();
-        }
-
+        await mediator.Send(command);
         return NotFound();
+        
+
     }
 }

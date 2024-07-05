@@ -3,7 +3,7 @@ using Restaurants.Domain.Entities;
 
 namespace Restaurants.Application.CQRS.UpdateRestaurantCommand;
 
-public class UpdateRestaurantCommand(int id) : IRequest<bool>
+public class UpdateRestaurantCommand(int id) : IRequest
 {
     public int Id { get; set; } = id;
     public string Name { get; set; } = default!;
