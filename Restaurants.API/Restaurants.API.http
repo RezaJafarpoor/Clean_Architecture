@@ -4,7 +4,7 @@ GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
 
 ###
-GET {{Restaurants.API_HostAddress}}/Restaurants/4
+GET {{Restaurants.API_HostAddress}}/Restaurants/1
 Accept: application/json
 ###
 POST {{Restaurants.API_HostAddress}}/Restaurants

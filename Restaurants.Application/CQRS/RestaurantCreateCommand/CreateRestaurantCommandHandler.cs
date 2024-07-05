@@ -9,7 +9,7 @@ public class CreateRestaurantCommandHandler(ILogger<CreateRestaurantCommandHandl
 {
     public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Creating a Restaurant");
+        logger.LogInformation("Creating a new Restaurant {@Restaurant}",request);
         var restaurant = CreateRestaurantCommand.FromEntity(request);
         var id = await repository.Create(restaurant);
         return id;
