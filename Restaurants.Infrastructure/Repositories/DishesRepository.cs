@@ -1,4 +1,5 @@
-﻿using Restaurants.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Persistence;
 
@@ -16,5 +17,11 @@ public class DishesRepository(RestaurantsDbContext dbContext) : IDishesRepositor
     public async Task SaveChanges()
     {
         await dbContext.SaveChangesAsync();
+    }
+
+    public async Task<Dish> GetDishByIdAsync(int restaurantId,int dishId)
+    {
+        var dish = await dbContext.dishes.Where(x => x.RestaurantId == restaurantId && x.Id == dishId).FirstOrDefaultAsync();
+        return dish!;
     }
 }

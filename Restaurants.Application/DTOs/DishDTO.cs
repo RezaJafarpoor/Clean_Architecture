@@ -20,7 +20,8 @@ public class DishDTO
             Name = dish.Name,
             Description = dish.Description,
             Price = dish.Price,
-            KiloCalories = dish.KiloCalories
+            KiloCalories = dish.KiloCalories,
+            RestaurantId = dish.RestaurantId
         };
     }
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.CQRS.CreateDishCommand;
+using Restaurants.Application.CQRS.GetDishByIdQuery;
 using Restaurants.Application.CQRS.GetDishesForRestaurantQuery;
 using Restaurants.Application.DTOs;
 
@@ -24,5 +25,12 @@ public class DishesController(IMediator mediator) : ControllerBase
     {
         var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));
         return Ok(dishes);
+    }
+
+    [HttpGet("{dishId:int}")]
+    public async Task<ActionResult<DishDTO>> GetDishByIdForRestaurant([FromRoute] int restaurantId, int dishId)
+    {
+        var dish = await mediator.Send(new  GetDishByIdQuery(restaurantId, dishId));
+        return Ok(dish);
     }
 }

@@ -49,3 +49,6 @@ Content-Type: application/json
 ###
 GET {{Restaurants.API_HostAddress}}/restaurants/1/Dishes
 Accept: application/json
+###
+GET {{Restaurants.API_HostAddress}}/restaurants/2/Dishes/2
+Accept: application/json
