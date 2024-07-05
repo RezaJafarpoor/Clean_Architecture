@@ -6,6 +6,7 @@ using Restaurants.Application.CQRS.RestaurantsQueries.GetRestaurantByIdQuery;
 using Restaurants.Application.CQRS.RestaurantsQueries.RestaurantGetAllQuery;
 using Restaurants.Application.CQRS.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
+using System.Runtime.CompilerServices;
 
 namespace Restaurants.API.Controllers;
 [ApiController]
@@ -14,6 +15,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 {
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants()
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
@@ -41,6 +43,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteRestaurant(int id)
     {
         var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
@@ -53,6 +57,8 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPatch("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> UpdateRestaurantById(int id, [FromBody]UpdateRestaurantCommand command)
     {
         command.Id = id;

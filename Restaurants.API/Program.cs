@@ -2,12 +2,12 @@ using Restaurants.Application.Extension;
 using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeds;
 using Serilog;
-using Serilog.Events;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Host.UseSerilog((context, configuration) =>
@@ -16,6 +16,12 @@ builder.Host.UseSerilog((context, configuration) =>
 });
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseSerilogRequestLogging();
 var scoped = app.Services.CreateScope();
 var seeder = scoped.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
