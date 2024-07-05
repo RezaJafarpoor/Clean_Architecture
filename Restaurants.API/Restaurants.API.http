@@ -4,7 +4,7 @@ GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
 
 ###
-GET {{Restaurants.API_HostAddress}}/Restaurants/1
+GET {{Restaurants.API_HostAddress}}/Restaurants/4
 Accept: application/json
 ###
 POST {{Restaurants.API_HostAddress}}/Restaurants
@@ -23,5 +23,16 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{Restaurants.API_HostAddress}}/Restaurants/3
+DELETE {{Restaurants.API_HostAddress}}/Restaurants/4
 Accept: application/json
+###
+PATCH {{Restaurants.API_HostAddress}}/Restaurants/4
+Content-Type: application/json
+
+{
+  "Name":"Test Sample",
+  "Description": "A culinary experience like no other",
+  "Category": "Italian",
+  "HasDelivery": false
+  
+}

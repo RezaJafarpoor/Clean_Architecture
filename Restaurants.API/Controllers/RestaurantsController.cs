@@ -4,6 +4,7 @@ using Restaurants.Application.CQRS.DeleteRestaurantCommand;
 using Restaurants.Application.CQRS.RestaurantCreateCommand;
 using Restaurants.Application.CQRS.RestaurantsQueries.GetRestaurantByIdQuery;
 using Restaurants.Application.CQRS.RestaurantsQueries.RestaurantGetAllQuery;
+using Restaurants.Application.CQRS.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
 
 namespace Restaurants.API.Controllers;
@@ -44,6 +45,19 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     {
         var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
         if (isDeleted)
+        {
+            return NoContent();
+        }
+
+        return NotFound();
+    }
+
+    [HttpPatch("{id:int}")]
+    public async Task<IActionResult> UpdateRestaurantById(int id, [FromBody]UpdateRestaurantCommand command)
+    {
+        command.Id = id;
+        var isUpdated = await mediator.Send(command);
+        if (isUpdated)
         {
             return NoContent();
         }
