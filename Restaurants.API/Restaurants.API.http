@@ -4,7 +4,7 @@ GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
 
 ###
-GET {{Restaurants.API_HostAddress}}/Restaurants/1
+GET {{Restaurants.API_HostAddress}}/Restaurants/2
 Accept: application/json
 ###
 POST {{Restaurants.API_HostAddress}}/Restaurants
@@ -35,4 +35,14 @@ Content-Type: application/json
   "Category": "Italian",
   "HasDelivery": false
   
+}
+###
+POST {{Restaurants.API_HostAddress}}/restaurants/2/Dishes
+Content-Type: application/json
+
+{
+  "Name": "Spaghetti bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price": 23,
+  "KiloCalories": 20
 }
