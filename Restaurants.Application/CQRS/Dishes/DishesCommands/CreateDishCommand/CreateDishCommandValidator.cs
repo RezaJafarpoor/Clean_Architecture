@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace Restaurants.Application.CQRS.CreateDishCommand;
+namespace Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
 
-public class CreateDishCommandValidator : AbstractValidator<CreateDishCommand>
+public class CreateDishCommandValidator : AbstractValidator<Dishes.DishesCommands.CreateDishCommand.CreateDishCommand>
 {
     public CreateDishCommandValidator()
     {

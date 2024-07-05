@@ -2,7 +2,7 @@
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Entities;
 
-namespace Restaurants.Application.CQRS.GetDishesForRestaurantQuery;
+namespace Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 
 public class GetDishesForRestaurantQuery(int restaurantId):IRequest<IEnumerable<DishDTO>>
 {

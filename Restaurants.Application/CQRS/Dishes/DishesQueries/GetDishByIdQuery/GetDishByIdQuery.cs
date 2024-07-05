@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Restaurants.Application.DTOs;
 
-namespace Restaurants.Application.CQRS.GetDishByIdQuery;
+namespace Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishByIdQuery;
 
 public class GetDishByIdQuery(int restaurantId, int dishId):IRequest<DishDTO>
 {

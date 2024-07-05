@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Restaurants.Domain.Entities;
 
-namespace Restaurants.Application.CQRS.RestaurantCreateCommand;
+namespace Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
 
 public class CreateRestaurantCommand : IRequest<int>
 {

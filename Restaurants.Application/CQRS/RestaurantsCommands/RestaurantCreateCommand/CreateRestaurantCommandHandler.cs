@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Restaurants.Domain.Repositories;
 
-namespace Restaurants.Application.CQRS.RestaurantCreateCommand;
+namespace Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
 
 public class CreateRestaurantCommandHandler(ILogger<CreateRestaurantCommandHandler> logger,
     IRestaurantRepository repository) : IRequestHandler<CreateRestaurantCommand, int>

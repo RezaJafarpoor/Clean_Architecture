@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.Application.CQRS.CreateDishCommand;
-using Restaurants.Application.CQRS.GetDishByIdQuery;
-using Restaurants.Application.CQRS.GetDishesForRestaurantQuery;
+using Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
+using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishByIdQuery;
+using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 using Restaurants.Application.DTOs;
 
 namespace Restaurants.API.Controllers;

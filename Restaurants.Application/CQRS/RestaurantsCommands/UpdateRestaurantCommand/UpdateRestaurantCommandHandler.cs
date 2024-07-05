@@ -4,12 +4,12 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
-namespace Restaurants.Application.CQRS.UpdateRestaurantCommand;
+namespace Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 
-public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommand> logger,
-    IRestaurantRepository repository) : IRequestHandler<UpdateRestaurantCommand>
+public class UpdateRestaurantCommandHandler(ILogger<RestaurantsCommands.UpdateRestaurantCommand.UpdateRestaurantCommand> logger,
+    IRestaurantRepository repository) : IRequestHandler<RestaurantsCommands.UpdateRestaurantCommand.UpdateRestaurantCommand>
 {
-    public async Task Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
+    public async Task Handle(RestaurantsCommands.UpdateRestaurantCommand.UpdateRestaurantCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Updating Restaurant {@Restaurant} with Id {@Id}",request, request.Id);
         var restaurant = await repository.GetByIdAsync(request.Id);

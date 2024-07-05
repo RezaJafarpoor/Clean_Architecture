@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace Restaurants.Application.CQRS.UpdateRestaurantCommand;
+namespace Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 
-public class UpdateRestaurantCommandValidator : AbstractValidator<UpdateRestaurantCommand>
+public class UpdateRestaurantCommandValidator : AbstractValidator<RestaurantsCommands.UpdateRestaurantCommand.UpdateRestaurantCommand>
 {
     public UpdateRestaurantCommandValidator()
     {

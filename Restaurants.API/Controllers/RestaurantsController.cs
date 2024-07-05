@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.Application.CQRS.DeleteRestaurantCommand;
-using Restaurants.Application.CQRS.RestaurantCreateCommand;
-using Restaurants.Application.CQRS.RestaurantsQueries.GetRestaurantByIdQuery;
-using Restaurants.Application.CQRS.RestaurantsQueries.RestaurantGetAllQuery;
-using Restaurants.Application.CQRS.UpdateRestaurantCommand;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.GetRestaurantByIdQuery;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.RestaurantGetAllQuery;
+using Restaurants.Application.CQRS.RestaurantsCommands.DeleteRestaurantCommand;
+using Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
+using Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Exceptions;
 using System.Runtime.CompilerServices;

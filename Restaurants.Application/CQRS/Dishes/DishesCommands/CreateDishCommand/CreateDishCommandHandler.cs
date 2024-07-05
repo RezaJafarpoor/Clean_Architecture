@@ -4,13 +4,13 @@ using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
-namespace Restaurants.Application.CQRS.CreateDishCommand;
+namespace Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
 
 public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger,
     IRestaurantRepository restaurantRepository,
-    IDishesRepository dishesRepository) : IRequestHandler<CreateDishCommand>
+    IDishesRepository dishesRepository) : IRequestHandler<Dishes.DishesCommands.CreateDishCommand.CreateDishCommand>
 {
-    public async Task Handle(CreateDishCommand request, CancellationToken cancellationToken)
+    public async Task Handle(Dishes.DishesCommands.CreateDishCommand.CreateDishCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating new dish: {@Dish}",request);
         var restaurant = await restaurantRepository.GetByIdAsync(request.RestaurantId);
