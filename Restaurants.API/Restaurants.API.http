@@ -21,3 +21,7 @@ Content-Type: application/json
   "Street": "456 Gourmet Avenue",
   "PostalCode": "12-554"
 }
+
+###
+DELETE {{Restaurants.API_HostAddress}}/Restaurants/3
+Accept: application/json
