@@ -1,9 +1,17 @@
 ﻿using MediatR;
 using Restaurants.Application.DTOs;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.Application.CQRS.GetDishesForRestaurantQuery;
 
 public class GetDishesForRestaurantQuery(int restaurantId):IRequest<IEnumerable<DishDTO>>
 {
-    public int restaurantId { get; set; } = restaurantId;
+    public int RestaurantId { get; set; } = restaurantId;
+
+
+    internal IEnumerable<Dish> FromEntity(Restaurant restaurant)
+    {
+        var dishes= restaurant.Dishes;
+        return dishes;
+    }
 }

@@ -46,3 +46,6 @@ Content-Type: application/json
   "Price": 23,
   "KiloCalories": 20
 }
+###
+GET {{Restaurants.API_HostAddress}}/restaurants/1/Dishes
+Accept: application/json
