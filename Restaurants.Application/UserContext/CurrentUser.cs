@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Restaurants.Application.User;
+﻿namespace Restaurants.Application.UserContext;
 
 public record CurrentUser(string Id, string Email,IEnumerable<string> Roles)
 {

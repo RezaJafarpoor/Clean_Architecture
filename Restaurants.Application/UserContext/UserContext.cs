@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Restaurants.Application.User;
+namespace Restaurants.Application.UserContext;
 
 public class UserContext(IHttpContextAccessor accessor) : IUserContext
 {
@@ -16,7 +16,7 @@ public class UserContext(IHttpContextAccessor accessor) : IUserContext
 
         var userId = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
         var email = user.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
-        var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role)!.Select(c => c.Value);
+        var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
         return new CurrentUser(userId, email, roles);
 
 
