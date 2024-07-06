@@ -7,6 +7,7 @@ using Restaurants.Application.CQRS.RestaurantsCommands.DeleteRestaurantCommand;
 using Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
 using Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
+using Restaurants.Domain.Constants;
 using Restaurants.Domain.Exceptions;
 using System.Runtime.CompilerServices;
 
@@ -35,9 +36,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> CreateRestaurant(CreateRestaurantCommand command)
     {
-
         var id = await mediator.Send(command);
         return CreatedAtAction(nameof(GetRestaurantById), new { id }, null);
     }

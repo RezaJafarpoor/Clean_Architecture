@@ -1,6 +1,6 @@
 @Restaurants.API_HostAddress = http://localhost:5045/api
 @Identity = http://localhost:5045/api/identity
-@Token = CfDJ8MIocOv7nbdKlPmz1JrFYoiaem6d9RcgSIZQ39ZrPTzXr_XyfP2mjiMON0v_w25kKeN3joSld18xAF4eKHRuTHiprzx7I-FeAw6A61D_SAUWDrBvP_NnvipsRKvPYe7fSU0ZOrEShHjzXx-NFjGjlUkmAp9NUEucDGow0KiNFye6O-wQPAaqqzpGtyD9isnNLsKAEOPdiKkK1wzP_1V64J-BUAqOAF2drntOROH9ctao9z3vfVCTTR_wiI2i2lpRFHO6oPeCEnGJbNfwxnSZzCE233Sn50Dq9eZ4hbTBQnuLf560qhWJUcw75TzuIKZNLDsOWHwIiuMudDBRAitMoCxvMxFnepngF5eflVNpfadnm_70_286-EaC2I5OWEE_mMfs6vfAWN_twQn2K5jbCmY88EqGdA4kCmpakNPD8MeUjLBmY3rcfcgv6d_DP8_zRNk1dvypvQd1Xui2QBjJ85OsNF8IdKA_CNE0MPwuw7KM2iopQCRiVL7MoPrsxrSNGlstZ5QqJ1n1KBiqXKx-eYN8FLf3cUBSyMBi0aLMZnMqILqhuOsnnhCvIY653lxHJsZtL4N6-323Q4KKaOLEqzQMDsrKkeq9ripV6CrvNnLdmco1zTsfrQ4oz4g-TAoBqP29pGir2xmbTniu49slO3n1wAJN2Qc76hD3Qo3T4-I2q0YZ37h259c1AjaJiJ1P_A
+@Token = CfDJ8MIocOv7nbdKlPmz1JrFYogXn30Bxz1gCBRvYT1VfQ7N9tNk6B58mH8Sxwx0PpOIiKY8w5awUNycSBXfKHfyVcWTXWOoKH9e3yrGJTa_32u0SqCvUtNsVL9PPincYsrBt1TuS0sKNtXRpn0CNZhJQJpl3yOA24tyzmbPvwOXYk5bD5Y0Ym3kwvukQhssIXcY8OYzLFJRi9p3fdOTdD5q9nWwzS24BeN7WwStf8oA1-R9aEI5jInhXmwk79l-Sg39uYrHIM-rF2AmBDrYdKAtfY4xu_0zYvivkSwkhla9HKGN8WRrkvm93cxmKwEpBbwYNP_VRspFhwEa9jsc1MQM3x2HhvZD8alEGOlGmOTNTkCKpGZuWtr5XAOXdLUFJdRjz9enMGdf0NvZeUWi_L4InpjZ3CkkZqZFTAPtqrRPYcDOc_F0HSWFinnZ8pDKeIxVC4-GLV3Pnwdh3DXIg8qqrD1whE-cVvSmqdxLK2nAMOFoJ-eh1ID_vcxvQHHNysgGazhDBUkuuMqhrXGajNxGweb1jlWkJoXp5X8TfBbzCa1neJ42hkVOYLFJCk0GYEybAeAyfCEGIW3M5-iw8fwNHPnp1IjwdISEYTzaN-xgZI3IcLHLVwsxDm_cTOre3fxNo41vwg7uWNMnKL08Wbhk_Y14E2HsqlFYBmt-jFn1lZg9celQ3RYUh9YZHDc5fSpz3A
 GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
 Authorization: Bearer {{Token}}
@@ -11,6 +11,7 @@ Accept: application/json
 ###
 POST {{Restaurants.API_HostAddress}}/Restaurants
 Content-Type: application/json
+Authorization: Bearer {{Token}}
 
 {
   "Name":"Spicy Delights",
@@ -61,7 +62,7 @@ POST {{Identity}}/register
 Content-Type: application/json
 
 {
-  "email": "testuser@test.com",
+  "email": "user@test.com",
   "password": "Password1!"
 }
 ###
@@ -70,6 +71,6 @@ POST {{Identity}}/login
 Content-Type: application/json
 
 {
-  "email": "testuser@test.com",
+  "email": "owner@test.com",
   "password": "Password1!"
 }
