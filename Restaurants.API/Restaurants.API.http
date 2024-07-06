@@ -1,4 +1,5 @@
 @Restaurants.API_HostAddress = http://localhost:5045/api
+@Identity = http://localhost:5045
 
 GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
@@ -54,3 +55,20 @@ GET {{Restaurants.API_HostAddress}}/restaurants/2/Dishes/2
 Accept: application/json
 ###
 DELETE {{Restaurants.API_HostAddress}}/restaurants/2/Dishes/9
+###
+POST {{Identity}}/register
+Content-Type: application/json
+
+{
+  "email": "testuser@test.com",
+  "password": "Password1!"
+}
+###
+
+POST {{Identity}}/login
+Content-Type: application/json
+
+{
+  "email": "testuser@test.com",
+  "password": "Password1!"
+}
