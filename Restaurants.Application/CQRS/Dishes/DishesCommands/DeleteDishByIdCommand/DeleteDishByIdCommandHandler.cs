@@ -9,7 +9,8 @@ public class DeleteDishByIdCommandHandler(ILogger<DeleteDishByIdCommandHandler> 
 {
     public async Task<bool> Handle(DeleteDishByIdCommand request, CancellationToken cancellationToken)
     {
+        logger.LogWarning("Deleting Dish with {@dishId} from restaurant with id {@restaurantId}", request.DishId, request.RestaurantId);
         var result = await dishesRepository.DeleteDishByIdAsync(request.RestaurantId, request.DishId);
-        return false;
+        return result;
     }
 }

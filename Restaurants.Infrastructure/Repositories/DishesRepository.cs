@@ -27,8 +27,8 @@ public class DishesRepository(RestaurantsDbContext dbContext) : IDishesRepositor
 
     public async Task<bool> DeleteDishByIdAsync(int restaurantId, int dishId)
     {
-        IQueryable queryable = dbContext.dishes.Where(r => r.RestaurantId == restaurantId && r.Id == dishId);
-         dbContext.Remove(queryable);
+        var dish = await dbContext.dishes.Where(r => r.RestaurantId == restaurantId && r.Id == dishId).FirstOrDefaultAsync();
+         dbContext.dishes.Remove(dish);
          var result = await dbContext.SaveChangesAsync() > 0;
          return result;
     }
