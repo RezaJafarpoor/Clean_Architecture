@@ -16,6 +16,10 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
             await context.Response.WriteAsync(notFound.Message);
             logger.LogWarning(notFound.Message);
         }
+        catch (ForbidException forbidException)
+        {
+            await context.Response.WriteAsync("Access forbidden");
+        }
         catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
