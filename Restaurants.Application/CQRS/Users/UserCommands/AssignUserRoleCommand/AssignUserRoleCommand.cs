@@ -2,8 +2,8 @@
 
 namespace Restaurants.Application.CQRS.Users.UserCommands.AssignUserRoleCommand;
 
-public class AssignUserRoleCommand(string userEmail,string roleName) : IRequest
+public class AssignUserRoleCommand : IRequest
 {
-    public string UserEmail { get; } = userEmail;
-    public string RoleName { get; } = roleName;
+    public string UserEmail { get; } = default!;
+    public string RoleName { get; } = default!;
 }
