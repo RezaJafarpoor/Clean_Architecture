@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="CQRS\Dishes\" />
-    <Folder Include="CQRS\RestaurantsCommands\" />
     <Folder Include="CQRS\Restaurants\" />
   </ItemGroup>
 

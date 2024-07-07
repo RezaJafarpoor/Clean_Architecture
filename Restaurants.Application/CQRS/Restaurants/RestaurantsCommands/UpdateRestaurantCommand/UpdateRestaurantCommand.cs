@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Restaurants.Domain.Entities;
 
-namespace Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
+namespace Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.UpdateRestaurantCommand;
 
 public class UpdateRestaurantCommand(int id) : IRequest
 {

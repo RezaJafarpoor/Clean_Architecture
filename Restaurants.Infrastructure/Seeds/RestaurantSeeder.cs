@@ -12,6 +12,12 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
     {
         if (await dbContext.Database.CanConnectAsync())
         {
+            if (!dbContext.Roles.Any())
+            {
+                var roles = GetRoles();
+                dbContext.Roles.AddRange(roles);
+                await dbContext.SaveChangesAsync();
+            }
             if (!dbContext.Restaurants.Any())
             {
                 var restaurants = GetRestaurants();
@@ -19,12 +25,7 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                 await dbContext.SaveChangesAsync();
             }
 
-            if (!dbContext.Roles.Any())
-            {
-                var roles = GetRoles();
-                dbContext.Roles.AddRange(roles);
-                await dbContext.SaveChangesAsync();
-            }
+            
         }
     }
 
@@ -83,7 +84,8 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                     City = "London",
                     Street = "Cork St 5",
                     PostalCode = "WC2N 5DU"
-                }
+                },
+                OwnerId = "720012d0-652a-4bfe-b01f-1f71ca11c148"
             },
             new ()
             {
@@ -98,10 +100,16 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                     City = "London",
                     Street = "Boots 193",
                     PostalCode = "W1F 8SR"
-                }
+                },
+                OwnerId = "48cf82d9-0e8b-45ba-86af-e964e393dbbc"
             }
         ];
 
         return restaurants;
     }
+
+   
+    
+    
+    
 }

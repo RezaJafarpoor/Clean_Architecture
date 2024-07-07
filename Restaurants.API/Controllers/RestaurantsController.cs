@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.DeleteRestaurantCommand;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.RestaurantCreateCommand;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.UpdateRestaurantCommand;
 using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.GetRestaurantByIdQuery;
 using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.RestaurantGetAllQuery;
-using Restaurants.Application.CQRS.RestaurantsCommands.DeleteRestaurantCommand;
-using Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
-using Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Constants;
 using Restaurants.Infrastructure.Constants;
@@ -19,6 +19,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants()
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
@@ -36,7 +37,6 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> CreateRestaurant(CreateRestaurantCommand command)
     {
         var id = await mediator.Send(command);
@@ -56,6 +56,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpPatch("{id:int}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> UpdateRestaurantById(int id, [FromBody]UpdateRestaurantCommand command)
     {
         command.Id = id;

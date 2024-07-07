@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Restaurants.Application.CQRS.RestaurantsCommands.DeleteRestaurantCommand;
+namespace Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.DeleteRestaurantCommand;
 
 public class DeleteRestaurantCommand(int id) : IRequest
 {
