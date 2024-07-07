@@ -62,7 +62,7 @@ POST {{Identity}}/register
 Content-Type: application/json
 
 {
-  "email": "user@test.com",
+  "email": "admin@test.com",
   "password": "Password1!"
 }
 ###
@@ -71,6 +71,6 @@ POST {{Identity}}/login
 Content-Type: application/json
 
 {
-  "email": "owner@test.com",
+  "email": "admin@test.com",
   "password": "Password1!"
 }

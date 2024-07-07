@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Restaurants.Application.CQRS.Users.UserCommands;
+namespace Restaurants.Application.CQRS.Users.UserCommands.UpdateDetailsCommand;
 
 public class UpdateDetailsCommand : IRequest
 {

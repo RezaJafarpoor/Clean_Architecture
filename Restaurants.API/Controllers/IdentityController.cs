@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.Application.CQRS.Users.UserCommands;
+using Restaurants.Application.CQRS.Users.UserCommands.AssignUserRoleCommand;
+using Restaurants.Application.CQRS.Users.UserCommands.UpdateDetailsCommand;
+using Restaurants.Domain.Constants;
 
 namespace Restaurants.API.Controllers;
 [ApiController]
@@ -9,12 +11,20 @@ namespace Restaurants.API.Controllers;
 public class IdentityController(IMediator mediator) : ControllerBase
 {
 
-    [HttpPatch]
+    [HttpPatch("updateUser")]
     [Authorize]
     public async Task<IActionResult> UpdateUserDetails(UpdateDetailsCommand command)
     {
         await mediator.Send(command);
         return NoContent();
 
+    }
+
+    [HttpPost("assignRole")]
+    [Authorize(Roles = UserRoles.Admin)]
+    public async Task<IActionResult> AssignUserRole(AssignUserRoleCommand command)
+    {
+        await mediator.Send(command);
+        return NoContent();
     }
 }
