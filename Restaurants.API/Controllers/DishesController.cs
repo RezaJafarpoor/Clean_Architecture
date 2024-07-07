@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
@@ -6,11 +7,13 @@ using Restaurants.Application.CQRS.Dishes.DishesCommands.DeleteDishByIdCommand;
 using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishByIdQuery;
 using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 using Restaurants.Application.DTOs;
+using Restaurants.Infrastructure.Constants;
 
 namespace Restaurants.API.Controllers;
 
 [ApiController]
 [Route("api/restaurants/{restaurantId:int}/[controller]")]
+[Authorize]
 public class DishesController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
@@ -22,6 +25,7 @@ public class DishesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Policy = PolicyNames.MinimumAge)]
     public async Task<ActionResult<IEnumerable<DishDTO>>> GetAllDishesForRestaurant([FromRoute] int restaurantId)
     {
         var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));
