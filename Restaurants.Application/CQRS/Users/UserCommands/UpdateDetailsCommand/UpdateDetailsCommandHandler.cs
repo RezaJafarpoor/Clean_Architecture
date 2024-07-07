@@ -15,7 +15,7 @@ public class UpdateDetailsCommandHandler(ILogger<UpdateDetailsCommandHandler> lo
     {
         var currentUser = userContext.GetCurrentUser();
         logger.LogInformation("Updating user : {UserId} with {@Request}",currentUser!.Id, request);
-        var user = await userStore.FindByIdAsync(currentUser!.Id, cancellationToken);
+        var user = await userStore.FindByIdAsync(currentUser.Id, cancellationToken);
         if (user == null) throw new NotFoundException(nameof(User), user!.Id);
         user.Nationality = request.Nationality;
         user.DateOfBirth = request.DateOfBirth;

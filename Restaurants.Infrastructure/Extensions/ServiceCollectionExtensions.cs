@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
+using Restaurants.Infrastructure.Authorization;
+using Restaurants.Infrastructure.Constants;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeds;
@@ -19,7 +21,10 @@ public static class ServiceCollectionExtensions
             .EnableSensitiveDataLogging());
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()
+            .AddClaimsPrincipalFactory<RestaurantUserClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<RestaurantsDbContext>();
+        services.AddAuthorizationBuilder()
+            .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(PolicyNames.HasNationality,"Iran","Germany"));
 
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         services.AddScoped<IRestaurantRepository, RestaurantsRepository>();

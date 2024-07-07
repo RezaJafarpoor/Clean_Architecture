@@ -8,8 +8,7 @@ using Restaurants.Application.CQRS.RestaurantsCommands.RestaurantCreateCommand;
 using Restaurants.Application.CQRS.RestaurantsCommands.UpdateRestaurantCommand;
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Constants;
-using Restaurants.Domain.Exceptions;
-using System.Runtime.CompilerServices;
+using Restaurants.Infrastructure.Constants;
 
 namespace Restaurants.API.Controllers;
 [ApiController]
@@ -27,6 +26,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [Authorize(Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<RestaurantDTO>> GetRestaurantById(int id)
     {
         
