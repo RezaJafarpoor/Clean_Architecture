@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Restaurants.Application.Common;
 using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.DeleteRestaurantCommand;
 using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.RestaurantCreateCommand;
 using Restaurants.Application.CQRS.Restaurants.RestaurantsCommands.UpdateRestaurantCommand;
@@ -20,9 +21,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants([FromQuery] string? searchPhrase, int pageSize, int pageNumber)
+    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants([FromQuery] string? searchPhrase, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection)
     {
-        var restaurants = await mediator.Send(new GetAllRestaurantsQuery(searchPhrase, pageSize, pageNumber));
+        var restaurants = await mediator.Send(new GetAllRestaurantsQuery(searchPhrase, pageSize, pageNumber, sortBy, sortDirection));
         return Ok(restaurants);
     }
 

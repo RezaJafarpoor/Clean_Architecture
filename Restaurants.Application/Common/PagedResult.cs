@@ -4,7 +4,7 @@ namespace Restaurants.Application.Common;
 
 public class PagedResult<T>
 {
-    public PagedResult(IEnumerable<T?> items, int totalItemCount, int pageSize, int pageNumber )
+    public PagedResult(IEnumerable<T?> items, int totalItemCount, int pageSize, int pageNumber)
     {
         Items = items;
         TotalItemCount = totalItemCount;
