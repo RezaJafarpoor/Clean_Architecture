@@ -1,6 +1,6 @@
 @Restaurants.API_HostAddress = http://localhost:5045/api
 @Identity = http://localhost:5045/api/identity
-@Token = CfDJ8MIocOv7nbdKlPmz1JrFYogXn30Bxz1gCBRvYT1VfQ7N9tNk6B58mH8Sxwx0PpOIiKY8w5awUNycSBXfKHfyVcWTXWOoKH9e3yrGJTa_32u0SqCvUtNsVL9PPincYsrBt1TuS0sKNtXRpn0CNZhJQJpl3yOA24tyzmbPvwOXYk5bD5Y0Ym3kwvukQhssIXcY8OYzLFJRi9p3fdOTdD5q9nWwzS24BeN7WwStf8oA1-R9aEI5jInhXmwk79l-Sg39uYrHIM-rF2AmBDrYdKAtfY4xu_0zYvivkSwkhla9HKGN8WRrkvm93cxmKwEpBbwYNP_VRspFhwEa9jsc1MQM3x2HhvZD8alEGOlGmOTNTkCKpGZuWtr5XAOXdLUFJdRjz9enMGdf0NvZeUWi_L4InpjZ3CkkZqZFTAPtqrRPYcDOc_F0HSWFinnZ8pDKeIxVC4-GLV3Pnwdh3DXIg8qqrD1whE-cVvSmqdxLK2nAMOFoJ-eh1ID_vcxvQHHNysgGazhDBUkuuMqhrXGajNxGweb1jlWkJoXp5X8TfBbzCa1neJ42hkVOYLFJCk0GYEybAeAyfCEGIW3M5-iw8fwNHPnp1IjwdISEYTzaN-xgZI3IcLHLVwsxDm_cTOre3fxNo41vwg7uWNMnKL08Wbhk_Y14E2HsqlFYBmt-jFn1lZg9celQ3RYUh9YZHDc5fSpz3A
+@Token = CfDJ8MIocOv7nbdKlPmz1JrFYoh2TGYOKEpAV1HeF2RQgVRpmB5OVzeA9daHnjZtolHjPb08-vZ9waYHxlNrutC_U8Yy_ImJWPmBlwg4NGe6EgVVT5FDb7vWM57uCbiHg5zkU3oHCpmR5fC03blHXs6P8SF30KA0axcJJvfSVxUjNo9LtVKceYUKDREVhlrov2Ut05k7bWRZdVAsIgWcNo-QYEH6zW_ud1IFKBNehKMuGUgKJP9TMRnv-rnM_YEPp41wGBeSxTPDXDGos8irqytI8p5KpYHKEqG9ISm5kiI81acSwRAp-QlpVMOtogLM6usGthsykTZfwQMao9KVOeQcH8D_G8n6KTTX4TNlPJjHtLBrg_wfpS7YjYGU9OksOAfWqQzeLDCkuYbJtSITp99hpZFirya8TkmUmZZINYQTwfBFLY8anCgjAU-OCPk4iRJaDbETT7G7WPEw_4_FLEZBZlDWdAGr1kD9Rv53t4eg86c9Qmz66BdqFhN-7UQFyKWIEkr7L9W5xU5nZCCa1mcitXGzNFduDvYNgwDCdc37N-8UIojMUWcVPWyCGLe1dKO3-z6dTzWvtxWN3bW2Eqd9_BAJq5ISUaPbFTmMAPcXCqinrTQEM9fgB0vU4vHO_EqC6cMUedmP2mJIJWDSvsSIp4X6oT8KZZyirdWH53iTMfr4uGBNEYwcXEpqRqH5r7Yavw
 GET {{Restaurants.API_HostAddress}}/Restaurants
 Accept: application/json
 Authorization: Bearer {{Token}}
@@ -62,7 +62,7 @@ POST {{Identity}}/register
 Content-Type: application/json
 
 {
-  "email": "admin@test.com",
+  "email": "bigOwner@test.com",
   "password": "Password1!"
 }
 ###
@@ -71,6 +71,6 @@ POST {{Identity}}/login
 Content-Type: application/json
 
 {
-  "email": "admin@test.com",
+  "email": "bigOwner@test.com",
   "password": "Password1!"
 }

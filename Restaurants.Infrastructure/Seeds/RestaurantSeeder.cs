@@ -85,7 +85,7 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                     Street = "Cork St 5",
                     PostalCode = "WC2N 5DU"
                 },
-                OwnerId = "720012d0-652a-4bfe-b01f-1f71ca11c148"
+                OwnerId = "b9646ecb-5698-4a1a-9938-33467d107cb4"
             },
             new ()
             {
@@ -101,7 +101,7 @@ public class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSeede
                     Street = "Boots 193",
                     PostalCode = "W1F 8SR"
                 },
-                OwnerId = "48cf82d9-0e8b-45ba-86af-e964e393dbbc"
+                OwnerId = "82ce57d5-4295-4da4-85de-0bc000bb81a7"
             }
         ];
 
