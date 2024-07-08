@@ -20,9 +20,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants([FromQuery] string? searchPhrase)
+    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants([FromQuery] string? searchPhrase, int pageSize, int pageNumber)
     {
-        var restaurants = await mediator.Send(new GetAllRestaurantsQuery(searchPhrase));
+        var restaurants = await mediator.Send(new GetAllRestaurantsQuery(searchPhrase, pageSize, pageNumber));
         return Ok(restaurants);
     }
 

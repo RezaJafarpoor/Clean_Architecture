@@ -3,11 +3,7 @@ using Restaurants.Application.DTOs;
 
 namespace Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.GetRestaurantByIdQuery;
 
-public class GetRestaurantByIdQuery : IRequest<RestaurantDTO>
+public class GetRestaurantByIdQuery(int id) : IRequest<RestaurantDTO>
 {
-    public GetRestaurantByIdQuery(int id)
-    {
-        Id = id;
-    }
-    public int  Id { get; set; }
+    public int  Id { get; set; } = id;
 }
