@@ -2,7 +2,7 @@
 using Restaurants.Application.UserContext;
 using Restaurants.Domain.Constants;
 
-namespace Restaurants.Application.Tests.UnitTests.UserContext.Unit.Tests;
+namespace Restaurants.Application.Tests.UnitTests.UserContext.Tests;
 
 public class CurrentUserTests
 {

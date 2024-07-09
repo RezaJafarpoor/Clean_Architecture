@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
-using NSubstitute.ReturnsExtensions;
 using Restaurants.Application.UserContext;
 using Restaurants.Domain.Constants;
 using System.Security.Claims;
 
-namespace Restaurants.Application.Tests.UnitTests.UserContext.Unit.Tests;
+namespace Restaurants.Application.Tests.UnitTests.UserContext.Tests;
 
 public class UserContextTests
 {
