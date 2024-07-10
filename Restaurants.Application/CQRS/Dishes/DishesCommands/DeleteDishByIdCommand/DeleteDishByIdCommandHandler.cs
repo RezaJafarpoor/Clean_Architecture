@@ -6,7 +6,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.CQRS.Dishes.DishesCommands.DeleteDishByIdCommand;
 
-public class DeleteDishByIdCommandHandler(ILogger<DeleteDishByIdCommandHandler> logger,
+public class DeleteDishByIdCommandHandler(ILoggerAdapter<DeleteDishByIdCommandHandler> logger,
     IDishesRepository dishesRepository,
     IRestaurantAuthorizationService restaurantAuthorizationService,
     IRestaurantRepository restaurantRepository) : IRequestHandler<DeleteDishByIdCommand, bool>
