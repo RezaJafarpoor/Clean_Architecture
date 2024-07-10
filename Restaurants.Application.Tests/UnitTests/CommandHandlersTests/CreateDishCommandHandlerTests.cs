@@ -83,10 +83,29 @@ public class CreateDishCommandHandlerTests
             KiloCalories = null,
             RestaurantId = 1
         };
-        _loggerAdapter.LogInformation("Creating new dish: {@Dish}",command);
+        Restaurant restaurant = new Restaurant
+        {
+            Id = 1,
+            Name = null,
+            Description = null,
+            Category = null,
+            HasDelivery = false,
+            ContactEmail = null,
+            ContactNumber = null,
+            Address = null,
+            Dishes = null,
+            Owner = null,
+            OwnerId = Guid.NewGuid().ToString()
+        };
+        var dishId = 3; 
+        _restaurantRepository.GetByIdAsync(command.RestaurantId).Returns(restaurant);
+        _authorizationService.Authorize(Arg.Do<Restaurant>(x => restaurant =x), ResourceOperations.Create).Returns(true);
+        var dish = command.FromEntity(command);
+        dish.Id = dishId;
+        _dishesRepository.CreateAsync(Arg.Do<Dish>(d => dish =d)).Returns(dishId);
         
         // Act
-        var result =async () => await _sut.Handle(command, new CancellationToken());
+         await _sut.Handle(command, new CancellationToken());
         
         // Assert
         _loggerAdapter.Received(1).LogInformation(Arg.Is("Creating new dish: {@Dish}"), Arg.Is(command));

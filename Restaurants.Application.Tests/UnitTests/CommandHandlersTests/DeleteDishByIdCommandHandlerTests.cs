@@ -103,8 +103,7 @@ public class DeleteDishByIdCommandHandlerTests
             OwnerId = null
         };
         var command = new DeleteDishByIdCommand(1,2);
-        _loggerAdapter.LogWarning("Deleting Dish with {@dishId} from restaurant with id {@restaurantId}",
-            command.DishId, command.RestaurantId);
+        
         _restaurantRepository.GetByIdAsync(1).Returns(new Restaurant());
         _dishesRepository.DeleteDishByIdAsync(1, 2).Returns(false);
         _authorizationService.Authorize(Arg.Do<Restaurant>(r => restaurant = r), ResourceOperations.Delete).Returns(true);
