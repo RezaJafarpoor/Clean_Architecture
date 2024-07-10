@@ -7,7 +7,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
 
-public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger,
+public class CreateDishCommandHandler(ILoggerAdapter<CreateDishCommandHandler> logger,
     IRestaurantRepository restaurantRepository,
     IDishesRepository dishesRepository,
     IRestaurantAuthorizationService restaurantAuthorizationService) : IRequestHandler<CreateDishCommand, int>
