@@ -1,0 +1,18 @@
+﻿services:
+  database:
+    image: postgres
+    container_name: RestaurantDB
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+  backend:
+    build:
+      dockerfile: /Dockerfile
+    image: cleanarchitecture:v1
+    container_name: Backend
+    ports:
+      - 8081:8080
+    depends_on:
+      - database
+ 

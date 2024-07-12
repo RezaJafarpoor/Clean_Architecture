@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using NSubstitute.ReturnsExtensions;
+using Restaurants.Application.Common;
 using Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;

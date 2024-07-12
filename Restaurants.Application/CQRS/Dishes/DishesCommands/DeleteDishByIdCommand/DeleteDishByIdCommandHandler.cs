@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Application.Common;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;

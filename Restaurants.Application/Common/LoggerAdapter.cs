@@ -18,6 +18,7 @@ public class LoggerAdapter<T> : ILoggerAdapter<T>
 
     public void LogWarning(string? message, params object?[] args)
     {
-        _logger.Log(LogLevel.Warning, message, args);
+        _logger.LogWarning(message, args);
+
     }
 }

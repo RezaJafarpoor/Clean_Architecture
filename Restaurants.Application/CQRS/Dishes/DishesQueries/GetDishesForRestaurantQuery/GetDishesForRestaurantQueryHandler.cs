@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Application.Common;
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
@@ -7,7 +8,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 
-public class GetDishesForRestaurantQueryHandler(ILogger<GetDishesForRestaurantQueryHandler> logger,
+public class GetDishesForRestaurantQueryHandler(ILoggerAdapter<GetDishesForRestaurantQueryHandler> logger,
     IRestaurantRepository repository) : IRequestHandler<Dishes.DishesQueries.GetDishesForRestaurantQuery.GetDishesForRestaurantQuery, IEnumerable<DishDTO>>
 {
     public async Task<IEnumerable<DishDTO>> Handle(Dishes.DishesQueries.GetDishesForRestaurantQuery.GetDishesForRestaurantQuery request, CancellationToken cancellationToken)

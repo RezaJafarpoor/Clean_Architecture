@@ -15,9 +15,9 @@ builder.AddPresentation();
 
 
 var app = builder.Build();
-var scoped = app.Services.CreateScope();
-var seeder = scoped.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
-await seeder.Seed();
+// var scoped = app.Services.CreateScope();
+// var seeder = scoped.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
+// await seeder.Seed();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
