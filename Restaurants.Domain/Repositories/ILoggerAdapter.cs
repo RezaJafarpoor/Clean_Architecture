@@ -1,4 +1,4 @@
-﻿namespace Restaurants.Domain.Repositories;
+﻿namespace Restaurants.Application.Common;
 
 public interface ILoggerAdapter<T>
 {
