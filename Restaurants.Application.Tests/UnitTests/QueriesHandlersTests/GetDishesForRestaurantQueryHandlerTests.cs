@@ -1,10 +1,12 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 using Restaurants.Application.Common;
 using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishByIdQuery;
 using Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 using Restaurants.Application.DTOs;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Tests.UnitTests.QueriesHandlersTests;
@@ -56,5 +58,20 @@ public class GetDishesForRestaurantQueryHandlerTests
         expected.Should().AllBeOfType<DishDTO>();
         result!.Name.Should().Be(dish.Name);
         
+    }
+
+    [Fact]
+    public async void Query_ShouldThrowsNotFoundException_WhenRestaurantNotExist()
+    {
+        // Arrange
+        const int id = 1;
+        var query = new GetDishesForRestaurantQuery(id);
+        var exception = new NotFoundException(nameof(Restaurant), id.ToString());
+        _restaurantRepository.GetByIdAsync(id).ReturnsNull();
+
+        // Act
+        var result =async () => await _sut.Handle(query, new CancellationToken());
+        // Assert
+        await result.Should().ThrowAsync<NotFoundException>();
     }
 }
