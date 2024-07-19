@@ -5,7 +5,7 @@ using Restaurants.Application.DTOs;
 namespace Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.RestaurantGetAllQuery;
 
 public class GetAllRestaurantsQuery(string? searchPhrase, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection
-) : IRequest<PagedResult<RestaurantDTO>>
+) : IRequest<PagedResult<RestaurantDto>>
 {
     public string? SearchPhrase { get; } = searchPhrase;
     public int PageSize { get; } = pageSize;

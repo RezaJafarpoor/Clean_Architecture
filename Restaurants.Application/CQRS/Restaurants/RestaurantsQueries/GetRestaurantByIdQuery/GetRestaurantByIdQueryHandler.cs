@@ -9,14 +9,14 @@ using Restaurants.Domain.Repositories;
 namespace Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.GetRestaurantByIdQuery;
 
 public class GetRestaurantByIdQueryHandler(ILoggerAdapter<GetRestaurantByIdQueryHandler> logger,
-    IRestaurantRepository repository) : IRequestHandler<Restaurants.RestaurantsQueries.GetRestaurantByIdQuery.GetRestaurantByIdQuery, RestaurantDTO>
+    IRestaurantRepository repository) : IRequestHandler<GetRestaurantByIdQuery, RestaurantDto>
 {
-    public async Task<RestaurantDTO> Handle(Restaurants.RestaurantsQueries.GetRestaurantByIdQuery.GetRestaurantByIdQuery request, CancellationToken cancellationToken)
+    public async Task<RestaurantDto> Handle(GetRestaurantByIdQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting  Restaurant By {@Restaurant}",request);
         var restaurant = await repository.GetByIdAsync(request.Id)
                          ?? throw new NotFoundException(nameof(Restaurant),request.Id.ToString());
-        var restaurantDto = RestaurantDTO.FromEntity(restaurant);
+        var restaurantDto = request.ToRestaurantDto(restaurant);
 
         return restaurantDto;
     }

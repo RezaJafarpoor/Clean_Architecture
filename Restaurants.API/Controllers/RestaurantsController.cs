@@ -21,7 +21,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [AllowAnonymous]
-    public async Task<ActionResult<IEnumerable<RestaurantDTO>>> GetRestaurants([FromQuery] string? searchPhrase, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection)
+    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetRestaurants([FromQuery] string? searchPhrase, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection)
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery(searchPhrase, pageSize, pageNumber, sortBy, sortDirection));
         return Ok(restaurants);
@@ -29,7 +29,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
     [HttpGet("{id:int}")]
     [Authorize(Policy = PolicyNames.HasNationality)]
-    public async Task<ActionResult<RestaurantDTO>> GetRestaurantById(int id)
+    public async Task<ActionResult<RestaurantDto>> GetRestaurantById(int id)
     {
         
         var restaurant =await mediator.Send(new GetRestaurantByIdQuery(id));
