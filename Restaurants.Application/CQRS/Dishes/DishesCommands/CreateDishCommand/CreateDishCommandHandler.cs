@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Restaurants.Application.Common;
+using Restaurants.Application.DTOs;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
@@ -22,7 +23,7 @@ public class CreateDishCommandHandler(ILoggerAdapter<CreateDishCommandHandler> l
         {
             throw new ForbidException();
         }
-        var dish = request.FromEntity(request);
+        var dish = request.ToDish(request);
         var id =await dishesRepository.CreateAsync(dish);
         return id;
     }

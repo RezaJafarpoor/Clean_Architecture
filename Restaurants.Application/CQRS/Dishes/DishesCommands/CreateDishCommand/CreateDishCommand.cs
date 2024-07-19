@@ -11,14 +11,5 @@ public class CreateDishCommand : IRequest<int>
     public int? KiloCalories { get; set; }
     public int  RestaurantId { get; set; }
 
-    public Dish FromEntity(CreateDishCommand command)
-    {
-        return new Dish()
-        {   RestaurantId = command.RestaurantId,
-            Name = command.Name,
-            Description = command.Description,
-            Price = command.Price,
-            KiloCalories = command.KiloCalories,
-        };
-    }
+    
 }
