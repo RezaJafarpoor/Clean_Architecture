@@ -18,23 +18,5 @@ public class CreateRestaurantCommand : IRequest<int>
     public string Street { get; set; } = default!;
     public string PostalCode { get; set; } = default!;
 
-    public static Restaurant FromEntity(CreateRestaurantCommand restaurantDto)
-    {
-
-        return new Restaurant()
-        {
-            Name = restaurantDto.Name,
-            Description = restaurantDto.Description,
-            Category = restaurantDto.Category,
-            HasDelivery = restaurantDto.HasDelivery,
-            ContactEmail = restaurantDto.ContactEmail,
-            ContactNumber = restaurantDto.ContactNumber,
-            Address = new Address()
-            {
-                City = restaurantDto.City,
-                Street = restaurantDto.Street,
-                PostalCode = restaurantDto.PostalCode
-            }
-        };
-    }
+   
 }
