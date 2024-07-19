@@ -18,7 +18,7 @@ public static class GetAllRestaurantQueryDto
             City = restaurant.Address.City,
             Street = restaurant.Address.Street,
             PostalCode = restaurant.Address.PostalCode,
-            Dishes = restaurant.Dishes.Select(DishDTO.FromEntity).ToList()
+            Dishes = restaurant.Dishes.Select(new DishDTO().ToDishDto).ToList()
         };
     }
 }

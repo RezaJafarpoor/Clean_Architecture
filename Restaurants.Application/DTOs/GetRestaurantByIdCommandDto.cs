@@ -1,11 +1,12 @@
 ﻿using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.GetRestaurantByIdQuery;
+using Restaurants.Application.CQRS.Restaurants.RestaurantsQueries.RestaurantGetAllQuery;
 using Restaurants.Domain.Entities;
 
 namespace Restaurants.Application.DTOs;
 
 public static class GetRestaurantByIdCommandDto
 {
-    public static RestaurantDto? ToRestaurantDto(this GetRestaurantByIdQuery query, Restaurant? restaurant)
+     public static RestaurantDto? ToRestaurantDto(this GetRestaurantByIdQuery query, Restaurant? restaurant)
     {
         if (restaurant == null) return null;
         return new RestaurantDto()
@@ -18,7 +19,7 @@ public static class GetRestaurantByIdCommandDto
             City = restaurant.Address.City,
             Street = restaurant.Address.Street,
             PostalCode = restaurant.Address.PostalCode,
-            Dishes = restaurant.Dishes.Select(DishDTO.FromEntity).ToList()
+            Dishes = restaurant.Dishes.Select(new DishDTO().ToDishDto).ToList()
         };
     }
 }

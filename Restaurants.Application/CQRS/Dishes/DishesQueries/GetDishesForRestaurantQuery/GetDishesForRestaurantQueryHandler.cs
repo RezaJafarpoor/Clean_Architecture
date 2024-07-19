@@ -5,6 +5,7 @@ using Restaurants.Application.DTOs;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
+using System.Linq.Expressions;
 
 namespace Restaurants.Application.CQRS.Dishes.DishesQueries.GetDishesForRestaurantQuery;
 
@@ -16,7 +17,7 @@ public class GetDishesForRestaurantQueryHandler(ILoggerAdapter<GetDishesForResta
         var restaurant = await repository.GetByIdAsync(request.RestaurantId);
         if (restaurant is null) throw new NotFoundException(nameof(Restaurant), request.RestaurantId.ToString());
         var dishes = request.FromEntity(restaurant);
-        var dishDto = dishes.Select(DishDTO.FromEntity);
+        var dishDto = dishes.Select(new DishDTO().ToDishDto);
         return dishDto;
     }
 }

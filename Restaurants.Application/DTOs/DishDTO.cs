@@ -11,7 +11,6 @@ public class DishDTO
     public int RestaurantId { get; set; }
     public int? KiloCalories { get; set; }
 
-   
-
+  
    
 }

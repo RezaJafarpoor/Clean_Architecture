@@ -3,6 +3,7 @@ using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using Restaurants.Application.Common;
 using Restaurants.Application.CQRS.Dishes.DishesCommands.CreateDishCommand;
+using Restaurants.Application.DTOs;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
@@ -59,7 +60,7 @@ public class CreateDishCommandHandlerTests
         var dishId = 3; 
         _restaurantRepository.GetByIdAsync(command.RestaurantId).Returns(restaurant);
         _authorizationService.Authorize(Arg.Do<Restaurant>(x => restaurant =x), ResourceOperations.Create).Returns(true);
-        var dish = command.FromEntity(command);
+        var dish = command.ToDish(command);
         dish.Id = dishId;
         _dishesRepository.CreateAsync(Arg.Do<Dish>(d => dish =d)).Returns(dishId);
         // Act
@@ -100,7 +101,7 @@ public class CreateDishCommandHandlerTests
         var dishId = 3; 
         _restaurantRepository.GetByIdAsync(command.RestaurantId).Returns(restaurant);
         _authorizationService.Authorize(Arg.Do<Restaurant>(x => restaurant =x), ResourceOperations.Create).Returns(true);
-        var dish = command.FromEntity(command);
+        var dish = command.ToDish(command);
         dish.Id = dishId;
         _dishesRepository.CreateAsync(Arg.Do<Dish>(d => dish =d)).Returns(dishId);
         
