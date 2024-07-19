@@ -10,12 +10,5 @@ public class UpdateRestaurantCommand(int id) : IRequest
     public string Description { get; set; } = default!;
     public bool HasDelivery { get; set; }
 
-    internal void FromEntity(UpdateRestaurantCommand source,Restaurant destination)
-    {
-
-        destination.Name = source.Name;
-        destination.Description = source.Description;
-        destination.HasDelivery = source.HasDelivery;
-
-    }
+    
 }

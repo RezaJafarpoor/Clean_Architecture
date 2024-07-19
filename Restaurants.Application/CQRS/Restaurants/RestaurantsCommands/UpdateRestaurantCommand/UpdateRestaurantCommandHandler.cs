@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Application.DTOs;
 using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
@@ -25,7 +26,7 @@ public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommand> log
             throw new ForbidException();
         }
 
-        request.FromEntity(request,restaurant);
+        request.ToRestaurant(request,restaurant);
         await repository.SaveChanges();
         
 
